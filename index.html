@@ -1,0 +1,1697 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <style>
+    :root {
+      --bg: #040404;
+      --text: #fcfdff;
+      --muted: #e5ebf7;
+      --line: #ffffff;
+      --accent: #8aa7ff;
+      --section-bg: #0a0a0a;
+      --panel-bg: linear-gradient(155deg, rgba(20, 24, 34, 0.9), rgba(10, 12, 20, 0.96));
+      --panel-border: 1px solid rgba(255, 255, 255, 0.14);
+      --panel-shadow: 0 20px 42px rgba(0, 0, 0, 0.38);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Sora", sans-serif;
+      overflow-x: hidden;
+      height: 100%;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-snap-stop: always;
+      position: relative;
+      isolation: isolate;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: url("perfil.jpeg") center center / cover no-repeat;
+      opacity: 0.08;
+      filter: blur(1.5px);
+    }
+
+    .page {
+      width: min(1780px, calc(100% - 28px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-shell {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 56% 42%, rgba(138, 167, 255, 0.16) 0%, rgba(36, 45, 79, 0.14) 24%, rgba(0, 0, 0, 0) 45%),
+        var(--section-bg);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    .hero-shell::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: radial-gradient(circle at 54% 46%, rgba(138, 167, 255, 0.16) 0%, rgba(16, 20, 38, 0) 48%);
+      filter: blur(16px);
+      z-index: 0;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 34px;
+      padding-top: 42px;
+      position: relative;
+      z-index: 4;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: #fff;
+      min-width: 0;
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(25, 29, 42, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      font-size: 28px;
+    }
+
+    .brand h1 {
+      font-size: 44px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      white-space: nowrap;
+    }
+
+    .brand h1 span {
+      font-size: 32px;
+      font-weight: 400;
+      margin-left: 0;
+    }
+
+    .main-nav {
+      margin-top: 0;
+      position: relative;
+      z-index: 4;
+      grid-column: 2;
+      justify-self: end;
+    }
+
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 38px;
+    }
+
+    .main-nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 400;
+      position: relative;
+      display: inline-flex;
+      padding-bottom: 10px;
+    }
+
+    .main-nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 74px;
+      height: 5px;
+      border-radius: 4px;
+      background: var(--accent);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, min(40vw, 700px));
+      align-items: center;
+      column-gap: clamp(24px, 3vw, 56px);
+      min-height: 620px;
+      margin-top: 26px;
+      padding-right: 0;
+    }
+
+    .hero-copy {
+      max-width: min(860px, 100%);
+      margin-top: 0;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-copy h2 {
+      font-size: clamp(38px, 3.2vw, 70px);
+      font-weight: 700;
+      line-height: 1.08;
+      margin-bottom: 14px;
+      letter-spacing: 0.2px;
+    }
+
+    .hero-copy p {
+      font-size: clamp(24px, 1.95vw, 42px);
+      font-weight: 400;
+      color: #f1f5ff;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.16);
+    }
+
+    .portrait {
+      position: relative;
+      right: 0;
+      top: 0;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      border: 0;
+      overflow: hidden;
+      z-index: 2;
+      transform-style: preserve-3d;
+      transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.38);
+      isolation: isolate;
+    }
+
+    .portrait::before {
+      content: none;
+    }
+
+    .portrait img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 24%;
+      transition: transform 0.35s ease-out;
+      border-radius: inherit;
+    }
+
+    .portrait::after {
+      content: none;
+    }
+
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(26px) scale(0.985);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      transition-delay: var(--delay, 0ms);
+    }
+
+    [data-animate].in-view {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .section {
+      background:
+        radial-gradient(circle at 22% 16%, rgba(138, 167, 255, 0.055) 0%, rgba(0, 0, 0, 0) 24%),
+        radial-gradient(circle at 80% 84%, rgba(113, 136, 214, 0.045) 0%, rgba(0, 0, 0, 0) 22%),
+        var(--section-bg);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 94px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    .section .page {
+      width: min(1100px, calc(100% - 28px));
+      margin: 0 auto;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(44px);
+      filter: blur(2px);
+      transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
+      will-change: opacity, transform;
+    }
+
+    #cv .page,
+    #contact .page {
+      width: min(1480px, calc(100% - 36px));
+    }
+
+    #cv .section-shell,
+    #contact .section-shell {
+      width: min(1320px, 100%);
+      margin: 0 auto;
+    }
+
+    .section.revealed .page {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    .section h3 {
+      font-size: clamp(34px, 4vw, 58px);
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      font-size: clamp(19px, 1.6vw, 28px);
+      color: var(--muted);
+      max-width: 900px;
+      line-height: 1.6;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #about {
+      background: var(--section-bg);
+      overflow: hidden;
+      position: relative;
+      --mx: 50%;
+      --my: 50%;
+      --about-glow-opacity: 0;
+    }
+
+    #about::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: var(--about-glow-opacity);
+      background: radial-gradient(520px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 74%);
+      transition: opacity 0.2s ease;
+    }
+
+    #about .page {
+      width: min(1560px, calc(100% - 28px));
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-shell {
+      width: 100%;
+      text-align: center;
+    }
+
+    .about-panel {
+      text-align: left;
+      position: relative;
+      --mx: 50%;
+      --my: 50%;
+      isolation: isolate;
+      min-height: calc(100vh - 220px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .about-panel::before {
+      content: none;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 38px;
+      align-items: start;
+    }
+
+    .about-intro {
+      max-width: 100%;
+      margin: 0;
+      text-align: left;
+    }
+
+    .about-eyebrow {
+      display: inline-flex;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #f2f6ff;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.22);
+      font-size: 14px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .about-title {
+      font-size: clamp(34px, 3.2vw, 54px);
+      line-height: 1.1;
+      margin-bottom: 12px;
+      color: #ffffff;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .about-copy {
+      color: #eef3ff;
+      font-size: clamp(18px, 1.15vw, 22px);
+      line-height: 1.65;
+      max-width: 760px;
+      margin: 0;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.12);
+    }
+
+    .about-points-wrap {
+      text-align: left;
+    }
+
+    .about-points-title {
+      font-size: 18px;
+      color: #ffffff;
+      margin-bottom: 12px;
+      letter-spacing: 0.2px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.16);
+    }
+
+    .about-points {
+      margin-top: 6px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      list-style: none;
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .about-point {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      color: #f2f6ff;
+      font-size: 18px;
+      transform: none;
+      display: flex;
+      gap: 10px;
+      line-height: 1.45;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 10px;
+      transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+      opacity: 0.85;
+    }
+
+    .about-point::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .about-point.active {
+      transform: translateX(6px);
+      border-bottom-color: rgba(255, 255, 255, 0.36);
+      opacity: 1;
+    }
+
+    .about-badges {
+      margin-top: 16px;
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .about-badge {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(26, 34, 55, 0.42);
+      color: #f5f8ff;
+      padding: 9px 14px;
+      font-size: 14px;
+      transition: transform 0.22s ease, background 0.22s ease;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+    }
+
+    .about-badge:hover {
+      transform: translateY(-2px);
+      background: rgba(48, 62, 94, 0.6);
+    }
+
+    .skills-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(180px, 1fr));
+      gap: 14px;
+    }
+
+    .skill-card {
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: linear-gradient(160deg, rgba(20, 24, 34, 0.8), rgba(11, 14, 22, 0.92));
+      border-radius: 14px;
+      padding: 14px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      min-height: 72px;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      will-change: transform;
+      overflow: hidden;
+    }
+
+    .skill-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(140px circle at var(--sx, 50%) var(--sy, 50%), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 60%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .skill-card:hover::before,
+    .skill-card.is-active::before {
+      opacity: 1;
+    }
+
+    .skill-card i {
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .skill-label {
+      font-size: 16px;
+      color: #f4f8ff;
+      text-shadow: none;
+    }
+
+    .projects-carousel {
+      margin-top: 14px;
+      position: relative;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #projects {
+      min-height: 93vh;
+      padding-top: 28px;
+      padding-bottom: 28px;
+    }
+
+    #projects .page {
+      width: min(1860px, calc(100% - 14px));
+      max-width: 1860px;
+      min-height: auto;
+    }
+
+    .carousel-viewport {
+      overflow-x: auto;
+      overflow-y: hidden;
+      border-radius: 18px;
+      scroll-snap-type: none;
+      scrollbar-width: none;
+      cursor: grab;
+      touch-action: pan-y;
+      user-select: none;
+    }
+
+    .carousel-viewport::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-viewport.dragging {
+      cursor: grabbing;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 14px;
+      padding: 6px 0;
+    }
+
+    .project-slide {
+      flex: 0 0 clamp(420px, 54vw, 760px);
+      aspect-ratio: 1 / 0.93;
+      border-radius: 18px;
+      overflow: hidden;
+      border: var(--panel-border);
+      background: var(--panel-bg);
+      display: grid;
+      grid-template-rows: 56% 44%;
+      text-align: left;
+    }
+
+    .project-media {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      border: 0;
+      object-fit: cover;
+      background: #101010;
+    }
+
+    .project-media-link {
+      display: block;
+      height: 100%;
+    }
+
+    .project-info {
+      border: 0;
+      background: transparent;
+      border-radius: 0;
+      padding: 18px 18px 20px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 8px;
+      height: 100%;
+    }
+
+    .project-info h4 {
+      font-size: clamp(24px, 2.35vw, 40px);
+      color: #f4f4f4;
+    }
+
+    .project-info h4 a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .project-info h4 a:hover {
+      border-bottom-color: rgba(138, 167, 255, 0.95);
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(138, 167, 255, 0.5);
+      background: rgba(33, 44, 72, 0.48);
+      color: #e8eeff;
+      text-decoration: none;
+      font-size: 13px;
+      margin-top: auto;
+      align-self: center;
+    }
+
+    .project-info p {
+      font-size: clamp(16px, 1.15vw, 21px);
+      color: #d6ddeb;
+      line-height: 1.45;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .project-tech {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .project-tech span {
+      font-size: 13px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #dce6ff;
+      background: rgba(31, 45, 78, 0.42);
+    }
+
+    .carousel-controls {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 0;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+    }
+
+    .carousel-dot.active {
+      background: var(--accent);
+    }
+
+
+    .about-soft-carousel {
+      margin-top: auto;
+      padding-top: 28px;
+      width: 100%;
+    }
+
+    .soft-marquee {
+      width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    }
+
+    .soft-track {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: max-content;
+      animation: soft-scroll 22s linear infinite;
+    }
+
+    .soft-marquee:hover .soft-track {
+      animation-play-state: paused;
+    }
+
+    .soft-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-right: 12px;
+    }
+
+    @keyframes soft-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .soft-skill {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(23, 29, 45, 0.5);
+      color: #eef4ff;
+      padding: 8px 13px;
+      font-size: 14px;
+    }
+
+    .contact-grid {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(260px, 1fr));
+      gap: 18px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-card {
+      text-decoration: none;
+      color: #f8fbff;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 14px;
+      padding: 16px 14px;
+      background: linear-gradient(160deg, rgba(20, 24, 34, 0.78), rgba(10, 14, 22, 0.9));
+      text-align: left;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, 0.34);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .contact-card strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .contact-card span {
+      color: #dce6fb;
+      font-size: 14px;
+      word-break: break-word;
+    }
+
+    .cv-actions {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(260px, 360px));
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .cv-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      gap: 8px;
+      color: #f4f8ff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 600;
+      background: linear-gradient(160deg, rgba(50, 68, 110, 0.75), rgba(24, 36, 64, 0.85));
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .cv-download:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .cv-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #e7efff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .cv-secondary:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.34);
+    }
+
+    @media (max-width: 1220px) {
+      .topbar { gap: 20px; }
+
+      .brand h1 {
+        font-size: 36px;
+      }
+
+      .brand h1 span {
+        font-size: 28px;
+      }
+
+      .main-nav {
+        grid-column: 1 / -1;
+      }
+
+      .main-nav a {
+        font-size: 22px;
+      }
+
+      .hero {
+        min-height: 550px;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, min(38vw, 470px));
+      }
+
+      .hero-copy {
+        max-width: 520px;
+        margin-top: 0;
+        padding: 0;
+      }
+
+      .portrait {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .topbar { padding-top: 28px; }
+
+      .brand h1 {
+        font-size: 34px;
+      }
+
+      .brand h1 span {
+        font-size: 26px;
+      }
+
+      .main-nav { margin-top: 8px; }
+
+      .main-nav ul {
+        gap: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .main-nav a {
+        font-size: 21px;
+      }
+
+      .hero {
+        min-height: auto;
+        display: block;
+        padding-right: 0;
+      }
+
+      .hero-copy {
+        max-width: 100%;
+        margin-top: 32px;
+        padding: 0;
+      }
+
+      .portrait {
+        position: relative;
+        width: min(88vw, 430px);
+        margin: 24px auto 0;
+        top: 0;
+        right: 0;
+        aspect-ratio: 1 / 1;
+      }
+
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .about-panel {
+        min-height: auto;
+      }
+
+      .about-points {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .project-slide {
+        flex-basis: clamp(280px, 82vw, 430px);
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(150px, 1fr));
+      }
+
+      .soft-track {
+        animation-duration: 18s;
+      }
+
+      .contact-grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+      }
+
+      .cv-actions {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        width: calc(100% - 20px);
+      }
+
+      .topbar {
+        gap: 14px;
+        grid-template-columns: 1fr;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      .brand h1 {
+        font-size: 32px;
+      }
+
+      .main-nav {
+        grid-column: 1;
+        justify-self: center;
+      }
+
+      .main-nav ul {
+        justify-content: center;
+        gap: 16px;
+      }
+
+      .main-nav a {
+        font-size: 18px;
+      }
+
+      .section {
+        padding: 74px 0;
+      }
+
+      .hero {
+        margin-top: 16px;
+      }
+
+      .hero-copy {
+        margin-top: 20px;
+      }
+
+      .hero-copy h2 {
+        font-size: clamp(30px, 8.6vw, 44px);
+        line-height: 1.12;
+        margin-bottom: 10px;
+      }
+
+      .hero-copy p {
+        font-size: clamp(18px, 5.3vw, 28px);
+      }
+
+      .portrait {
+        width: min(74vw, 340px);
+      }
+
+      #about .page {
+        width: calc(100% - 20px);
+      }
+
+      .about-title {
+        font-size: clamp(26px, 7.4vw, 38px);
+        margin-bottom: 8px;
+      }
+
+      .about-copy {
+        font-size: clamp(15px, 4.1vw, 18px);
+        line-height: 1.5;
+      }
+
+      .about-points-title {
+        font-size: 16px;
+      }
+
+      .about-point {
+        font-size: 15px;
+        line-height: 1.4;
+        padding-bottom: 8px;
+      }
+
+      .about-badge {
+        font-size: 12px;
+        padding: 7px 11px;
+      }
+
+      .soft-skill {
+        font-size: 12px;
+        padding: 7px 11px;
+      }
+
+      #cv .page,
+      #contact .page {
+        width: calc(100% - 20px);
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cv-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .cv-download,
+      .cv-secondary {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .brand h1 {
+        font-size: 28px;
+      }
+
+      .logo {
+        width: 48px;
+        height: 48px;
+        font-size: 23px;
+      }
+
+      .main-nav a {
+        font-size: 17px;
+        padding-bottom: 8px;
+      }
+
+      .hero-copy h2 {
+        font-size: clamp(26px, 9.2vw, 36px);
+      }
+
+      .hero-copy p {
+        font-size: clamp(16px, 5.2vw, 22px);
+      }
+
+      .portrait {
+        width: min(72vw, 300px);
+        margin-top: 18px;
+      }
+
+      .about-title {
+        font-size: clamp(22px, 8vw, 30px);
+      }
+
+      .about-copy {
+        font-size: 14px;
+      }
+
+      .about-point {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero-shell" id="home">
+    <div class="page">
+      <header class="topbar">
+        <a href="#home" class="brand" aria-label="Início">
+          <div class="logo" aria-hidden="true">
+            💻
+          </div>
+          <h1>Portfólio</h1>
+        </a>
+
+        <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a class="active" href="#home">Início</a></li>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#projects">Projetos</a></li>
+          <li><a href="#skills">Habilidades</a></li>
+          <li><a href="#cv">CV</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+      </nav>
+
+</header>
+
+      <section class="hero">
+        <div class="hero-copy" data-animate>
+          <h2>FRANK MONTES - DESENVOLVEDOR BACKEND</h2>
+          <p>Java e Python para transformar desafios em soluções reais.</p>
+        </div>
+
+        <figure class="portrait" id="portrait" data-animate>
+          <img src="perfil.jpeg" alt="Foto de perfil" />
+        </figure>
+      </section>
+
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="page">
+      <article class="about-panel" id="about-panel">
+        <div class="about-layout">
+          <div class="about-intro">
+            <span class="about-eyebrow">Perfil Profissional</span>
+            <h3 class="about-title">Desenvolvedor Backend | Java & Python</h3>
+            <p class="about-copy">Sou estudante do 8º período de Ciência da Computação e desenvolvedor backend com Java e Python. Meu objetivo é atuar em Big Techs, e por isso mantenho uma rotina diária de evolução técnica, com disciplina e constância.</p>
+            <div class="about-badges">
+              <span class="about-badge">Foco em Big Techs</span>
+              <span class="about-badge">Disciplina diária</span>
+              <span class="about-badge">Aprendizado contínuo</span>
+            </div>
+          </div>
+          <div class="about-points-wrap">
+            <h4 class="about-points-title">Competências principais</h4>
+            <ul class="about-points">
+              <li class="about-point">Objetivo profissional claro: construir carreira em Big Techs.</li>
+              <li class="about-point">Compromisso diário com decisões técnicas melhores e arquitetura de software.</li>
+              <li class="about-point">Treino frequente em LeetCode para elevar raciocínio algorítmico.</li>
+              <li class="about-point">Aprimoramento contínuo dos fundamentos de programação e do inglês intermediário.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="about-soft-carousel" aria-label="Soft skills">
+          <div class="soft-marquee">
+            <div class="soft-track">
+              <div class="soft-group">
+                <span class="soft-skill">Comunicação clara</span>
+                <span class="soft-skill">Colaboração em equipe</span>
+                <span class="soft-skill">Resolução de problemas</span>
+                <span class="soft-skill">Mentalidade de dono</span>
+                <span class="soft-skill">Organização e foco</span>
+                <span class="soft-skill">Adaptação rápida</span>
+              </div>
+              <div class="soft-group" aria-hidden="true">
+                <span class="soft-skill">Comunicação clara</span>
+                <span class="soft-skill">Colaboração em equipe</span>
+                <span class="soft-skill">Resolução de problemas</span>
+                <span class="soft-skill">Mentalidade de dono</span>
+                <span class="soft-skill">Organização e foco</span>
+                <span class="soft-skill">Adaptação rápida</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="page">
+      <div class="section-shell">
+        <h3>Projetos</h3>
+        <p>Projetos com foco em backend, APIs RESTful, integrações e aplicações com impacto real.</p>
+        <div class="projects-carousel" id="projects-carousel">
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="carousel-track">
+            <article class="project-slide">
+              <a class="project-media-link" href="https://setlive-frontend.onrender.com" target="_blank" rel="noopener noreferrer">
+                <img class="project-media" src="setlive.png" alt="Imagem do projeto SetLive" />
+              </a>
+              <div class="project-info">
+                <h4><a href="https://setlive-frontend.onrender.com" target="_blank" rel="noopener noreferrer">SetLive</a></h4>
+                <p>Plataforma para músicos com repertório, modo palco e pedidos via QR Code em apresentações ao vivo.</p>
+                <div class="project-tech">
+                  <span>Django</span><span>DRF</span><span>React</span><span>PostgreSQL</span>
+                </div>
+                <a class="project-link" href="https://setlive-frontend.onrender.com" target="_blank" rel="noopener noreferrer">Acessar projeto</a>
+              </div>
+            </article>
+
+            <article class="project-slide">
+              <img class="project-media" src="perfil.jpeg" alt="Imagem do projeto de aluguel de quadras" />
+              <div class="project-info">
+                <h4><a href="https://github.com/olimontes/landpage" target="_blank" rel="noopener noreferrer">Landing Page em Django</a></h4>
+                <p>Landing page desenvolvida com Django, com foco em performance, SEO e estrutura limpa para conversão.</p>
+                <div class="project-tech">
+                  <span>Django</span><span>HTML/CSS</span><span>SEO</span>
+                </div>
+                <a class="project-link" href="https://github.com/olimontes/landpage" target="_blank" rel="noopener noreferrer">Ver repositório</a>
+              </div>
+            </article>
+
+            <article class="project-slide">
+              <img class="project-media" src="javarestapi.png" alt="Imagem da API REST com Java e Spring Boot" />
+              <div class="project-info">
+                <h4><a href="https://github.com/olimontes/ApiRestAgendamento" target="_blank" rel="noopener noreferrer">API REST com Java e Spring Boot</a></h4>
+                <p>API REST com Java e Spring Boot, com arquitetura organizada, endpoints escaláveis e boas práticas de backend.</p>
+                <div class="project-tech">
+                  <span>Java</span><span>Spring Boot</span><span>REST</span><span>MVC</span>
+                </div>
+                <a class="project-link" href="https://github.com/olimontes/ApiRestAgendamento" target="_blank" rel="noopener noreferrer">Ver repositório</a>
+              </div>
+            </article>
+
+            <article class="project-slide">
+              <img class="project-media" src="djangoapi.png" alt="Imagem da API com Python e Django" />
+              <div class="project-info">
+                <h4><a href="https://github.com/olimontes/django-basic-api" target="_blank" rel="noopener noreferrer">API com Python e Django</a></h4>
+                <p>API backend com Python e Django para serviços web, com foco em produtividade, manutenção e integração.</p>
+                <div class="project-tech">
+                  <span>Python</span><span>Django</span><span>REST</span><span>PostgreSQL</span>
+                </div>
+                <a class="project-link" href="https://github.com/olimontes/django-basic-api" target="_blank" rel="noopener noreferrer">Ver repositório</a>
+              </div>
+            </article>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <div class="carousel-dots" id="carousel-dots"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="page">
+      <div class="section-shell">
+        <h3>Habilidades</h3>
+        <p>Tecnologias e práticas que utilizo no desenvolvimento backend.</p>
+        <div class="skills-grid" id="skills-grid">
+          <div class="skill-card"><i class="devicon-java-plain colored" aria-hidden="true"></i><span class="skill-label">Java</span></div>
+          <div class="skill-card"><i class="devicon-python-plain colored" aria-hidden="true"></i><span class="skill-label">Python</span></div>
+          <div class="skill-card"><i class="devicon-django-plain colored" aria-hidden="true"></i><span class="skill-label">Django</span></div>
+          <div class="skill-card"><i class="devicon-spring-plain colored" aria-hidden="true"></i><span class="skill-label">Spring Boot</span></div>
+          <div class="skill-card"><i class="devicon-php-plain colored" aria-hidden="true"></i><span class="skill-label">PHP</span></div>
+          <div class="skill-card"><i class="devicon-postgresql-plain colored" aria-hidden="true"></i><span class="skill-label">PostgreSQL</span></div>
+          <div class="skill-card"><i class="devicon-git-plain colored" aria-hidden="true"></i><span class="skill-label">Git</span></div>
+          <div class="skill-card"><i class="devicon-github-original" aria-hidden="true"></i><span class="skill-label">GitHub</span></div>
+          <div class="skill-card"><i class="devicon-jira-plain colored" aria-hidden="true"></i><span class="skill-label">Scrum</span></div>
+          <div class="skill-card"><i class="devicon-trello-plain colored" aria-hidden="true"></i><span class="skill-label">Kanban</span></div>
+          <div class="skill-card"><i class="devicon-django-plain colored" aria-hidden="true"></i><span class="skill-label">DRF</span></div>
+          <div class="skill-card"><i class="devicon-fastapi-plain colored" aria-hidden="true"></i><span class="skill-label">RESTful APIs</span></div>
+          <div class="skill-card"><i class="devicon-spring-plain colored" aria-hidden="true"></i><span class="skill-label">Arquitetura MVC</span></div>
+          <div class="skill-card"><i class="devicon-mysql-plain colored" aria-hidden="true"></i><span class="skill-label">SQL</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cv">
+    <div class="page">
+      <div class="section-shell">
+        <h3>Currículo</h3>
+        <p>Tenha acesso ao meu CV atualizado com formação, projetos e trajetória profissional.</p>
+        <div class="cv-actions">
+          <a class="cv-download" href="./Curr%C3%ADculo_FrankMontes.pdf" download="Curriculo_FrankMontes.pdf">⬇ Baixar CV (PDF)</a>
+          <a class="cv-secondary" href="./Curr%C3%ADculo_FrankMontes.pdf" target="_blank" rel="noopener noreferrer">Visualizar no navegador</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="page">
+      <div class="section-shell">
+        <h3>Contato</h3>
+      <p>Estou aberto a oportunidades na área de desenvolvimento, com foco em backend com Java e Python. Vamos conversar.</p>
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:fgabrieloliveira1@gmail.com">
+          <strong>Email</strong>
+          <span>fgabrieloliveira1@gmail.com</span>
+        </a>
+        <a class="contact-card" href="https://github.com/olimontes" target="_blank" rel="noopener noreferrer">
+          <strong>GitHub</strong>
+          <span>github.com/olimontes</span>
+        </a>
+        <a class="contact-card" href="https://www.linkedin.com/in/frankmontes01/" target="_blank" rel="noopener noreferrer">
+          <strong>LinkedIn</strong>
+          <span>linkedin.com/in/frankmontes01</span>
+        </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const navLinks = [...document.querySelectorAll(".main-nav a")];
+    const sections = [...document.querySelectorAll("#home, #about, #projects, #skills, #cv, #contact")];
+    const snapSections = [...document.querySelectorAll(".hero-shell, .section")];
+    const sectionBlocks = [...document.querySelectorAll(".section")];
+    const animatedElements = [...document.querySelectorAll("[data-animate]")];
+    const portrait = document.getElementById("portrait");
+    const heroShell = document.querySelector(".hero-shell");
+    const carouselViewport = document.querySelector(".carousel-viewport");
+    const carouselTrack = document.getElementById("carousel-track");
+    const carouselDots = document.getElementById("carousel-dots");
+    const carouselSlides = carouselTrack ? [...carouselTrack.querySelectorAll(".project-slide")] : [];
+    const aboutPanel = document.getElementById("about-panel");
+    const aboutSection = document.getElementById("about");
+    const aboutBadges = [...document.querySelectorAll(".about-badge")];
+    const aboutPoints = [...document.querySelectorAll(".about-point")];
+    const skillCards = [...document.querySelectorAll(".skill-card")];
+    let carouselIndex = 0;
+    let carouselAutoRaf = null;
+
+    function setActiveLink() {
+      const offset = window.scrollY + window.innerHeight * 0.35;
+      let currentId = "home";
+      for (const section of sections) {
+        if (offset >= section.offsetTop) currentId = section.id;
+      }
+      navLinks.forEach((link) => {
+        const isActive = link.getAttribute("href") === `#${currentId}`;
+        link.classList.toggle("active", isActive);
+      });
+    }
+
+    function setupScrollAnimations() {
+      animatedElements.forEach((element, index) => {
+        element.style.setProperty("--delay", `${Math.min(index * 45, 300)}ms`);
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16 });
+
+      animatedElements.forEach((element) => observer.observe(element));
+    }
+
+    function setupSectionTransitions() {
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("revealed", entry.isIntersecting);
+        });
+      }, { threshold: 0.2 });
+
+      sectionBlocks.forEach((section) => sectionObserver.observe(section));
+    }
+
+    function setupProjectsCarousel() {
+      if (!carouselTrack || !carouselSlides.length || !carouselDots || !carouselViewport) return;
+      let isUserInteracting = false;
+      let autoSpeed = 0.55;
+      let lastTs = 0;
+      const baseSlidesCount = carouselSlides.length;
+
+      // Duplica os slides para criar loop visual contínuo sem salto aparente.
+      carouselSlides.forEach((slide) => {
+        const clone = slide.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        carouselTrack.appendChild(clone);
+      });
+
+      const allSlides = [...carouselTrack.querySelectorAll(".project-slide")];
+
+      function renderDots() {
+        carouselDots.innerHTML = carouselSlides.map((_, index) =>
+          `<button class="carousel-dot ${index === carouselIndex ? "active" : ""}" data-slide="${index}" aria-label="Ir para projeto ${index + 1}"></button>`
+        ).join("");
+      }
+
+      function goToSlide(index) {
+        carouselIndex = (index + baseSlidesCount) % baseSlidesCount;
+        const slide = allSlides[carouselIndex];
+        if (!slide) return;
+        const left = slide.offsetLeft;
+        carouselViewport.scrollTo({ left, behavior: "smooth" });
+        renderDots();
+      }
+
+      function startAutoPlay() {
+        if (carouselAutoRaf) return;
+        const loop = (ts) => {
+          if (!lastTs) lastTs = ts;
+          const delta = ts - lastTs;
+          lastTs = ts;
+
+          if (!isUserInteracting) {
+            carouselViewport.scrollLeft += autoSpeed * (delta / 16.67);
+            const half = carouselTrack.scrollWidth / 2;
+            if (carouselViewport.scrollLeft >= half) {
+              carouselViewport.scrollLeft -= half;
+            }
+            syncActiveDotByScroll();
+          }
+          carouselAutoRaf = requestAnimationFrame(loop);
+        };
+        carouselAutoRaf = requestAnimationFrame(loop);
+      }
+
+      function syncActiveDotByScroll() {
+        const center = carouselViewport.scrollLeft + carouselViewport.clientWidth / 2;
+        let nearest = 0;
+        let nearestDistance = Number.POSITIVE_INFINITY;
+        allSlides.forEach((slide, index) => {
+          const slideCenter = slide.offsetLeft + slide.clientWidth / 2;
+          const distance = Math.abs(slideCenter - center);
+          if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearest = index % baseSlidesCount;
+          }
+        });
+        if (nearest !== carouselIndex) {
+          carouselIndex = nearest;
+          renderDots();
+        }
+      }
+
+      carouselDots.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLButtonElement)) return;
+        const next = Number(target.dataset.slide);
+        if (Number.isNaN(next)) return;
+        goToSlide(next);
+      });
+
+      let isPointerDown = false;
+      let startX = 0;
+      let startScrollLeft = 0;
+      let moved = false;
+
+      carouselViewport.addEventListener("pointerdown", (event) => {
+        if (event.target instanceof Element && event.target.closest("a")) return;
+        isUserInteracting = true;
+        isPointerDown = true;
+        moved = false;
+        startX = event.clientX;
+        startScrollLeft = carouselViewport.scrollLeft;
+        carouselViewport.classList.add("dragging");
+        carouselViewport.setPointerCapture(event.pointerId);
+      });
+
+      carouselViewport.addEventListener("pointermove", (event) => {
+        if (!isPointerDown) return;
+        const dx = event.clientX - startX;
+        if (Math.abs(dx) > 3) moved = true;
+        carouselViewport.scrollLeft = startScrollLeft - dx;
+      });
+
+      function finishPointerDrag(event) {
+        if (!isPointerDown) return;
+        isPointerDown = false;
+        isUserInteracting = false;
+        carouselViewport.classList.remove("dragging");
+        if (event) carouselViewport.releasePointerCapture(event.pointerId);
+        if (moved) {
+          syncActiveDotByScroll();
+        }
+      }
+
+      carouselViewport.addEventListener("pointerup", finishPointerDrag);
+      carouselViewport.addEventListener("pointercancel", finishPointerDrag);
+      carouselViewport.addEventListener("pointerleave", finishPointerDrag);
+      carouselViewport.addEventListener("scroll", syncActiveDotByScroll, { passive: true });
+
+      carouselViewport.addEventListener("wheel", (event) => {
+        event.preventDefault();
+        isUserInteracting = true;
+        carouselViewport.scrollLeft += event.deltaY + event.deltaX;
+        clearTimeout(carouselViewport._wheelResumeTimer);
+        carouselViewport._wheelResumeTimer = setTimeout(() => {
+          isUserInteracting = false;
+        }, 180);
+      }, { passive: false });
+
+      renderDots();
+      syncActiveDotByScroll();
+      startAutoPlay();
+    }
+
+    function setupParallax() {
+      if (!heroShell || !portrait) return;
+      heroShell.addEventListener("mousemove", (event) => {
+        const rect = heroShell.getBoundingClientRect();
+        const px = (event.clientX - rect.left) / rect.width - 0.5;
+        const py = (event.clientY - rect.top) / rect.height - 0.5;
+        const prect = portrait.getBoundingClientRect();
+        const mx = ((event.clientX - prect.left) / prect.width) * 100;
+        const my = ((event.clientY - prect.top) / prect.height) * 100;
+        portrait.style.setProperty("--mx", `${mx}%`);
+        portrait.style.setProperty("--my", `${my}%`);
+        portrait.style.transform = `rotateY(${px * 7}deg) rotateX(${-py * 6}deg) translateZ(0)`;
+        portrait.style.boxShadow = `${-px * 24}px ${20 + py * 18}px 44px rgba(0,0,0,0.5)`;
+        const img = portrait.querySelector("img");
+        if (img) img.style.transform = `scale(1.02) translate(${px * 4}px, ${py * 4}px)`;
+      });
+
+      heroShell.addEventListener("mouseleave", () => {
+        portrait.style.transform = "rotateY(0deg) rotateX(0deg)";
+        portrait.style.boxShadow = "0 24px 42px rgba(0, 0, 0, 0.45)";
+        portrait.style.setProperty("--mx", "50%");
+        portrait.style.setProperty("--my", "50%");
+        const img = portrait.querySelector("img");
+        if (img) img.style.transform = "scale(1) translate(0, 0)";
+      });
+    }
+
+    function getNearestSectionIndex() {
+      const y = window.scrollY;
+      let nearestIndex = 0;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+      snapSections.forEach((section, index) => {
+        const distance = Math.abs(section.offsetTop - y);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestIndex = index;
+        }
+      });
+      return nearestIndex;
+    }
+
+    function setupSectionStepScroll() {
+      if (!snapSections.length) return;
+      let isLocked = false;
+
+      window.addEventListener("wheel", (event) => {
+        if (event.target instanceof Element && event.target.closest(".carousel-viewport")) return;
+        if (isLocked) {
+          event.preventDefault();
+          return;
+        }
+
+        if (Math.abs(event.deltaY) < 8) return;
+        event.preventDefault();
+
+        const currentIndex = getNearestSectionIndex();
+        const direction = event.deltaY > 0 ? 1 : -1;
+        const nextIndex = Math.max(0, Math.min(snapSections.length - 1, currentIndex + direction));
+        if (nextIndex === currentIndex) return;
+
+        isLocked = true;
+        snapSections[nextIndex].scrollIntoView({ behavior: "smooth", block: "start" });
+        setTimeout(() => { isLocked = false; }, 700);
+      }, { passive: false });
+    }
+
+    function setupAboutInteractions() {
+      if (!aboutPanel || !aboutSection) return;
+
+      window.addEventListener("mousemove", (event) => {
+        const rect = aboutSection.getBoundingClientRect();
+        const isInView = rect.bottom > 0 && rect.top < window.innerHeight;
+        if (!isInView) return;
+
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const px = Math.max(0, Math.min(100, (x / rect.width) * 100));
+        const py = Math.max(0, Math.min(100, (y / rect.height) * 100));
+        aboutSection.style.setProperty("--mx", `${px}%`);
+        aboutSection.style.setProperty("--my", `${py}%`);
+        aboutSection.style.setProperty("--about-glow-opacity", "1");
+
+        let closest = null;
+        let closestDistance = Number.POSITIVE_INFINITY;
+        aboutPoints.forEach((point) => {
+          const prect = point.getBoundingClientRect();
+          const cx = prect.left + prect.width / 2;
+          const cy = prect.top + prect.height / 2;
+          const distance = Math.hypot(event.clientX - cx, event.clientY - cy);
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closest = point;
+          }
+        });
+        aboutPoints.forEach((point) => point.classList.toggle("active", point === closest));
+      });
+
+      aboutSection.addEventListener("mouseleave", () => {
+        aboutSection.style.setProperty("--mx", "50%");
+        aboutSection.style.setProperty("--my", "50%");
+        aboutSection.style.setProperty("--about-glow-opacity", "0");
+        aboutPoints.forEach((point) => point.classList.remove("active"));
+      });
+
+      const aboutObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          aboutPoints.forEach((point, index) => {
+            point.animate(
+              [
+                { opacity: 0, transform: "translateY(8px)" },
+                { opacity: 0.85, transform: "translateY(0)" }
+              ],
+              { duration: 420, delay: index * 80, fill: "both", easing: "ease-out" }
+            );
+          });
+          aboutBadges.forEach((badge, index) => {
+            badge.animate(
+              [
+                { opacity: 0, transform: "translateY(10px)" },
+                { opacity: 1, transform: "translateY(0)" }
+              ],
+              { duration: 420, delay: index * 90, fill: "both", easing: "ease-out" }
+            );
+          });
+          aboutObserver.disconnect();
+        });
+      }, { threshold: 0.35 });
+
+      aboutObserver.observe(aboutPanel);
+    }
+
+    function setupSkillsInteractions() {
+      if (!skillCards.length) return;
+
+      skillCards.forEach((card) => {
+        card.addEventListener("mousemove", (event) => {
+          const rect = card.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const y = event.clientY - rect.top;
+          const rx = ((y / rect.height) - 0.5) * -9;
+          const ry = ((x / rect.width) - 0.5) * 11;
+          card.style.setProperty("--sx", `${(x / rect.width) * 100}%`);
+          card.style.setProperty("--sy", `${(y / rect.height) * 100}%`);
+          card.style.transform = `perspective(600px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-3px)`;
+          card.style.borderColor = "rgba(255, 255, 255, 0.36)";
+          card.style.boxShadow = "0 14px 26px rgba(0,0,0,0.34)";
+        });
+
+        function resetCard() {
+          card.style.transform = "";
+          card.style.borderColor = "rgba(255, 255, 255, 0.16)";
+          card.style.boxShadow = "";
+        }
+
+        card.addEventListener("mouseleave", resetCard);
+        card.addEventListener("touchstart", () => {
+          skillCards.forEach((item) => item.classList.remove("is-active"));
+          card.classList.add("is-active");
+        }, { passive: true });
+        card.addEventListener("click", () => {
+          skillCards.forEach((item) => item.classList.remove("is-active"));
+          card.classList.add("is-active");
+        });
+      });
+    }
+
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.forEach((item) => item.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
+
+    window.addEventListener("scroll", () => {
+      setActiveLink();
+    }, { passive: true });
+
+    window.addEventListener("load", () => {
+      setActiveLink();
+      setupScrollAnimations();
+      setupSectionTransitions();
+      setupProjectsCarousel();
+      setupParallax();
+      setupSectionStepScroll();
+      setupAboutInteractions();
+      setupSkillsInteractions();
+    });
+  </script>
+</body>
+</html>
