@@ -635,9 +635,21 @@
       border: var(--panel-border);
       background: var(--panel-bg);
       display: grid;
-      grid-template-rows: 56% 44%;
+      grid-template-rows: minmax(0, 56fr) minmax(0, 44fr);
       text-align: left;
       scroll-snap-align: center;
+      contain: layout paint;
+    }
+
+    .project-slide > .project-media-link,
+    .project-slide > .project-media {
+      grid-row: 1;
+      min-height: 0;
+    }
+
+    .project-slide > .project-info {
+      grid-row: 2;
+      min-height: 0;
     }
 
     .project-media {
@@ -793,7 +805,7 @@
         min-width: 350px !important;
         height: min(60vh, 540px);
         aspect-ratio: auto;
-        grid-template-rows: 56% 44%;
+        grid-template-rows: minmax(0, 56fr) minmax(0, 44fr);
       }
 
       .project-info {
@@ -1247,7 +1259,7 @@
         min-width: 92vw !important;
         max-width: 92vw !important;
         min-height: 470px;
-        grid-template-rows: 42% 58%;
+        grid-template-rows: minmax(0, 42fr) minmax(0, 58fr);
       }
 
       .project-info {
