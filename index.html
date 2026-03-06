@@ -597,6 +597,19 @@
       user-select: none;
     }
 
+    .carousel-viewport.native-scroll {
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+      touch-action: pan-x pan-y;
+      cursor: auto;
+    }
+
+    .carousel-viewport.native-scroll .carousel-track {
+      transform: none !important;
+      will-change: auto !important;
+    }
+
     .carousel-viewport::-webkit-scrollbar {
       display: none;
     }
@@ -609,6 +622,8 @@
       display: flex;
       gap: 16px;
       padding: 6px 0;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
     }
 
     .project-slide {
@@ -622,6 +637,7 @@
       display: grid;
       grid-template-rows: 56% 44%;
       text-align: left;
+      scroll-snap-align: center;
     }
 
     .project-media {
@@ -1710,6 +1726,7 @@
     function setupProjectsCarousel() {
       if (!carouselTrack || !carouselSlides.length || !carouselDots || !carouselViewport) return;
       const baseSlidesCount = carouselSlides.length;
+      const isTouchPreferred = window.matchMedia("(max-width: 980px), (hover: none) and (pointer: coarse)").matches;
       let autoRaf = null;
       let lastTs = 0;
       let offset = 0;
@@ -1733,13 +1750,74 @@
       }
 
       function renderDots() {
-        carouselDots.innerHTML = carouselSlides.map((_, index) =>
+        carouselDots.innerHTML = Array.from({ length: baseSlidesCount }, (_, index) =>
           `<button class="carousel-dot ${index === leadIndex ? "active" : ""}" data-slide="${index}" aria-label="Ir para projeto ${index + 1}"></button>`
         ).join("");
       }
 
       function getRealSlides() {
         return [...carouselTrack.querySelectorAll(".project-slide:not([data-continuity])")];
+      }
+
+      function setupNativeScrollMode() {
+        let scrollRaf = null;
+        carouselViewport.classList.add("native-scroll");
+        carouselTrack.style.transform = "none";
+        carouselTrack.style.willChange = "auto";
+        carouselViewport.style.touchAction = "pan-x pan-y";
+
+        function updateByScrollPosition() {
+          const realSlides = getRealSlides();
+          if (!realSlides.length) return;
+
+          const viewportRect = carouselViewport.getBoundingClientRect();
+          const viewportCenter = viewportRect.left + viewportRect.width / 2;
+          let bestIdx = 0;
+          let bestDistance = Number.POSITIVE_INFINITY;
+
+          realSlides.forEach((slide, idx) => {
+            const rect = slide.getBoundingClientRect();
+            const center = rect.left + rect.width / 2;
+            const distance = Math.abs(center - viewportCenter);
+            if (distance < bestDistance) {
+              bestDistance = distance;
+              bestIdx = idx;
+            }
+          });
+
+          if (leadIndex !== bestIdx) {
+            leadIndex = bestIdx;
+            renderDots();
+          }
+        }
+
+        carouselDots.addEventListener("click", (event) => {
+          const target = event.target;
+          if (!(target instanceof HTMLButtonElement)) return;
+          const next = Number(target.dataset.slide);
+          if (Number.isNaN(next)) return;
+          const realSlides = getRealSlides();
+          const slide = realSlides[next];
+          if (!slide) return;
+          const targetLeft = slide.offsetLeft - Math.max(0, (carouselViewport.clientWidth - slide.clientWidth) / 2);
+          carouselViewport.scrollTo({ left: targetLeft, behavior: "smooth" });
+          leadIndex = next;
+          renderDots();
+        });
+
+        carouselViewport.addEventListener("scroll", () => {
+          if (scrollRaf) cancelAnimationFrame(scrollRaf);
+          scrollRaf = requestAnimationFrame(updateByScrollPosition);
+        }, { passive: true });
+
+        window.addEventListener("resize", updateByScrollPosition);
+        renderDots();
+        updateByScrollPosition();
+      }
+
+      if (isTouchPreferred) {
+        setupNativeScrollMode();
+        return;
       }
 
       function refreshContinuityClone() {
