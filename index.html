@@ -66,7 +66,6 @@
 
     .hero-shell {
       min-height: 100vh;
-      min-height: 100dvh;
       position: relative;
       overflow: hidden;
       background:
@@ -264,7 +263,6 @@
         radial-gradient(circle at 80% 84%, rgba(113, 136, 214, 0.045) 0%, rgba(0, 0, 0, 0) 22%),
         var(--section-bg);
       min-height: 100vh;
-      min-height: 100dvh;
       display: flex;
       align-items: center;
       padding: 94px 0;
@@ -341,14 +339,6 @@
       z-index: 1;
     }
 
-    #about .page,
-    .about-panel,
-    .about-layout,
-    .about-intro,
-    .about-points-wrap {
-      min-width: 0;
-    }
-
     .section-shell {
       width: 100%;
       text-align: center;
@@ -401,9 +391,6 @@
       margin-bottom: 12px;
       color: #ffffff;
       text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-      max-width: 100%;
-      white-space: normal;
-      overflow-wrap: anywhere;
     }
 
     .about-copy {
@@ -413,8 +400,6 @@
       max-width: 760px;
       margin: 0;
       text-shadow: 0 0 12px rgba(255, 255, 255, 0.12);
-      overflow-wrap: anywhere;
-      word-break: break-word;
     }
 
     .about-points-wrap {
@@ -477,12 +462,6 @@
       flex-wrap: wrap;
     }
 
-    .about-badges-track {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
     .about-badge {
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.24);
@@ -497,10 +476,6 @@
     .about-badge:hover {
       transform: translateY(-2px);
       background: rgba(48, 62, 94, 0.6);
-    }
-
-    .about-badge.mobile-dup {
-      display: none;
     }
 
     .skills-grid {
@@ -553,7 +528,7 @@
     }
 
     .projects-carousel {
-      margin-top: 8px;
+      margin-top: 14px;
       position: relative;
       width: 100%;
       margin-left: auto;
@@ -561,9 +536,9 @@
     }
 
     #projects {
-      min-height: 100vh;
-      padding-top: 16px;
-      padding-bottom: 16px;
+      min-height: 93vh;
+      padding-top: 28px;
+      padding-bottom: 28px;
     }
 
     #projects .page {
@@ -598,14 +573,14 @@
     }
 
     .project-slide {
-      flex: 0 0 clamp(140px, 18vw, 220px);
-      aspect-ratio: 1 / 0.7;
+      flex: 0 0 clamp(420px, 54vw, 760px);
+      aspect-ratio: 1 / 0.93;
       border-radius: 18px;
       overflow: hidden;
       border: var(--panel-border);
       background: var(--panel-bg);
       display: grid;
-      grid-template-rows: 58% 42%;
+      grid-template-rows: 56% 44%;
       text-align: left;
     }
 
@@ -627,17 +602,17 @@
       border: 0;
       background: transparent;
       border-radius: 0;
-      padding: 14px 14px 16px;
+      padding: 18px 18px 20px;
       text-align: left;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      gap: 6px;
+      gap: 8px;
       height: 100%;
     }
 
     .project-info h4 {
-      font-size: clamp(20px, 1.9vw, 30px);
+      font-size: clamp(24px, 2.35vw, 40px);
       color: #f4f4f4;
     }
 
@@ -668,12 +643,12 @@
     }
 
     .project-info p {
-      font-size: clamp(14px, 0.95vw, 17px);
+      font-size: clamp(16px, 1.15vw, 21px);
       color: #d6ddeb;
       line-height: 1.45;
       margin: 0;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -685,8 +660,8 @@
     }
 
     .project-tech span {
-      font-size: 12px;
-      padding: 5px 9px;
+      font-size: 13px;
+      padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: #dce6ff;
@@ -694,7 +669,7 @@
     }
 
     .carousel-controls {
-      margin-top: 8px;
+      margin-top: 12px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -717,74 +692,6 @@
 
     .carousel-dot.active {
       background: var(--accent);
-    }
-
-    @media (min-width: 981px) {
-      #projects {
-        min-height: 100vh;
-        padding-top: 6px;
-        padding-bottom: 6px;
-      }
-
-      #projects h3 {
-        font-size: clamp(34px, 3.1vw, 56px);
-        margin-bottom: 10px;
-      }
-
-      #projects .section-shell > p {
-        max-width: 980px;
-        font-size: clamp(18px, 1.5vw, 28px);
-        margin-bottom: 2px;
-      }
-
-      .projects-carousel {
-        margin-top: 2px;
-      }
-
-      .carousel-track {
-        gap: 12px;
-        padding: 0;
-      }
-
-      .project-slide {
-        flex: 0 0 clamp(120px, 12vw, 170px);
-        height: min(24vh, 170px);
-        aspect-ratio: auto;
-        grid-template-rows: 52% 48%;
-      }
-
-      .project-info {
-        padding: 8px 8px 10px;
-        gap: 4px;
-      }
-
-      .project-info h4 {
-        font-size: clamp(12px, 0.75vw, 15px);
-      }
-
-      .project-info p {
-        font-size: clamp(10px, 0.56vw, 11px);
-        line-height: 1.35;
-        -webkit-line-clamp: 1;
-      }
-
-      .project-tech {
-        display: none;
-      }
-
-      .project-link {
-        font-size: 10px;
-        padding: 4px 6px;
-      }
-
-      .project-tech span {
-        font-size: 11px;
-        padding: 4px 8px;
-      }
-
-      .carousel-controls {
-        margin-top: 4px;
-      }
     }
 
 
@@ -825,22 +732,13 @@
       to { transform: translateX(-50%); }
     }
 
-    @keyframes about-badges-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
     .soft-skill {
-      display: inline-flex;
-      align-items: center;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.24);
       background: rgba(23, 29, 45, 0.5);
       color: #eef4ff;
       padding: 8px 13px;
       font-size: 14px;
-      white-space: nowrap;
-      min-height: 34px;
     }
 
     .contact-grid {
@@ -1015,10 +913,6 @@
         gap: 16px;
       }
 
-      #about .page {
-        width: calc(100% - 18px);
-      }
-
       .about-panel {
         min-height: auto;
       }
@@ -1033,23 +927,7 @@
       }
 
       .skills-grid {
-        display: flex;
-        overflow-x: auto;
-        overflow-y: hidden;
-        gap: 10px;
-        padding-bottom: 4px;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-      }
-
-      .skills-grid::-webkit-scrollbar {
-        display: none;
-      }
-
-      .skill-card {
-        flex: 0 0 min(72vw, 300px);
-        scroll-snap-align: center;
-        min-height: 66px;
+        grid-template-columns: repeat(2, minmax(150px, 1fr));
       }
 
       .soft-track {
@@ -1066,23 +944,8 @@
     }
 
     @media (max-width: 768px) {
-      html,
-      body {
-        width: 100%;
-        max-width: 100%;
-      }
-
-      body {
-        scroll-snap-type: none;
-        overflow-x: hidden;
-      }
-
       .page {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding-left: 12px;
-        padding-right: 12px;
+        width: calc(100% - 20px);
       }
 
       .topbar {
@@ -1113,88 +976,7 @@
       }
 
       .section {
-        min-height: 100vh;
-        min-height: 100dvh;
         padding: 74px 0;
-      }
-
-      #projects {
-        min-height: 100vh;
-        padding-top: 20px;
-        padding-bottom: 20px;
-      }
-
-      #projects .page { width: 100% !important; }
-
-      #projects h3 {
-        font-size: clamp(28px, 8vw, 38px);
-        margin-bottom: 10px;
-      }
-
-      #projects .section-shell > p {
-        font-size: clamp(14px, 4vw, 18px);
-        line-height: 1.45;
-        margin-bottom: 8px;
-      }
-
-      .projects-carousel {
-        margin-top: 8px;
-      }
-
-      .project-slide {
-        flex: 0 0 100%;
-        min-height: 300px;
-        aspect-ratio: auto;
-        grid-template-rows: 39% 61%;
-      }
-
-      .carousel-track {
-        gap: 0;
-        padding: 0;
-      }
-
-      .carousel-viewport {
-        border-radius: 14px;
-      }
-
-      .project-info {
-        padding: 11px 11px 12px;
-        gap: 6px;
-        min-height: 0;
-      }
-
-      .project-info h4 {
-        font-size: clamp(18px, 5.2vw, 24px);
-        line-height: 1.2;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-
-      .project-info p {
-        font-size: 13px;
-        line-height: 1.4;
-        -webkit-line-clamp: 3;
-      }
-
-      .project-tech {
-        gap: 6px;
-      }
-
-      .project-tech span {
-        font-size: 10px;
-        padding: 4px 7px;
-      }
-
-      .project-link {
-        font-size: 12px;
-        padding: 8px 10px;
-        margin-top: auto;
-      }
-
-      .carousel-controls {
-        margin-top: 8px;
       }
 
       .hero {
@@ -1219,44 +1001,18 @@
         width: min(74vw, 340px);
       }
 
-      #about .page { width: 100% !important; }
-
-      .about-panel,
-      .about-layout,
-      .about-intro,
-      .about-points-wrap {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        overflow: visible;
-      }
-
-      .about-intro,
-      .about-points-wrap {
-        width: 100%;
-        max-width: 100%;
-        overflow: visible;
-      }
-
-      .about-layout,
-      .about-intro,
-      .about-copy,
-      .about-title,
-      .about-points-wrap,
-      .about-points {
-        max-width: 100%;
+      #about .page {
+        width: calc(100% - 20px);
       }
 
       .about-title {
         font-size: clamp(26px, 7.4vw, 38px);
         margin-bottom: 8px;
-        line-height: 1.16;
       }
 
       .about-copy {
         font-size: clamp(15px, 4.1vw, 18px);
         line-height: 1.5;
-        max-width: 100%;
       }
 
       .about-points-title {
@@ -1272,30 +1028,6 @@
       .about-badge {
         font-size: 12px;
         padding: 7px 11px;
-        white-space: nowrap;
-        display: inline-flex;
-      }
-
-      .about-badges {
-        display: block;
-        width: 100%;
-        overflow: hidden;
-        flex-wrap: nowrap;
-        mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-        -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-      }
-
-      .about-badges-track {
-        display: inline-flex !important;
-        align-items: center;
-        gap: 10px;
-        width: max-content;
-        animation: about-badges-scroll 12s linear infinite;
-        flex-wrap: nowrap !important;
-      }
-
-      .about-badge.mobile-dup {
-        display: inline-flex;
       }
 
       .soft-skill {
@@ -1304,7 +1036,9 @@
       }
 
       #cv .page,
-      #contact .page { width: 100% !important; }
+      #contact .page {
+        width: calc(100% - 20px);
+      }
 
       .contact-grid {
         grid-template-columns: 1fr;
@@ -1336,40 +1070,6 @@
         padding-bottom: 8px;
       }
 
-      .page {
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-
-      #projects .page { width: 100% !important; }
-
-      .project-slide {
-        flex-basis: 100%;
-        min-height: 280px;
-        grid-template-rows: 36% 64%;
-      }
-
-      .project-info p {
-        -webkit-line-clamp: 2;
-      }
-
-      .project-tech {
-        display: none;
-      }
-
-      .skills-grid {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-      }
-
-      .skill-card {
-        flex: 0 0 78vw;
-        min-height: 62px;
-      }
-
       .hero-copy h2 {
         font-size: clamp(26px, 9.2vw, 36px);
       }
@@ -1394,8 +1094,6 @@
       .about-point {
         font-size: 14px;
       }
-
-      #about .page { width: 100% !important; }
     }
   </style>
 </head>
@@ -1446,46 +1144,39 @@
             <h3 class="about-title">Desenvolvedor Backend | Java & Python</h3>
             <p class="about-copy">Sou estudante do 8º período de Ciência da Computação e desenvolvedor backend com Java e Python. Meu objetivo é atuar em Big Techs, e por isso mantenho uma rotina diária de evolução técnica, com disciplina e constância.</p>
             <div class="about-badges">
-              <div class="about-badges-track">
-                <span class="about-badge">Foco em Big Techs</span>
-                <span class="about-badge">Disciplina diária</span>
-                <span class="about-badge">Aprendizado contínuo</span>
-                <span class="about-badge mobile-dup">Foco em Big Techs</span>
-                <span class="about-badge mobile-dup">Disciplina diária</span>
-                <span class="about-badge mobile-dup">Aprendizado contínuo</span>
-              </div>
+              <span class="about-badge">Foco em Big Techs</span>
+              <span class="about-badge">Disciplina diária</span>
+              <span class="about-badge">Aprendizado contínuo</span>
             </div>
           </div>
           <div class="about-points-wrap">
             <h4 class="about-points-title">Competências principais</h4>
             <ul class="about-points">
-              <li class="about-point">Comunicação clara</li>
-              <li class="about-point">Colaboração em equipe</li>
-              <li class="about-point">Resolução de problemas</li>
-              <li class="about-point">Mentalidade de dono</li>
-              <li class="about-point">Organização e foco</li>
-              <li class="about-point">Adaptação rápida</li>
+              <li class="about-point">Objetivo profissional claro: construir carreira em Big Techs.</li>
+              <li class="about-point">Compromisso diário com decisões técnicas melhores e arquitetura de software.</li>
+              <li class="about-point">Treino frequente em LeetCode para elevar raciocínio algorítmico.</li>
+              <li class="about-point">Aprimoramento contínuo dos fundamentos de programação e do inglês intermediário.</li>
             </ul>
           </div>
         </div>
-        <div class="about-soft-carousel" aria-label="Competências principais">
+        <div class="about-soft-carousel" aria-label="Soft skills">
           <div class="soft-marquee">
             <div class="soft-track">
               <div class="soft-group">
-                <span class="soft-skill">Java, Python, Django, DRF e PHP</span>
-                <span class="soft-skill">PostgreSQL e SQL</span>
-                <span class="soft-skill">Git/GitHub, branches e pull requests</span>
-                <span class="soft-skill">Spring Boot e boas práticas de API</span>
-                <span class="soft-skill">Arquitetura de software e decisões técnicas</span>
-                <span class="soft-skill">LeetCode e fundamentos de programação</span>
+                <span class="soft-skill">Comunicação clara</span>
+                <span class="soft-skill">Colaboração em equipe</span>
+                <span class="soft-skill">Resolução de problemas</span>
+                <span class="soft-skill">Mentalidade de dono</span>
+                <span class="soft-skill">Organização e foco</span>
+                <span class="soft-skill">Adaptação rápida</span>
               </div>
               <div class="soft-group" aria-hidden="true">
-                <span class="soft-skill">Java, Python, Django, DRF e PHP</span>
-                <span class="soft-skill">PostgreSQL e SQL</span>
-                <span class="soft-skill">Git/GitHub, branches e pull requests</span>
-                <span class="soft-skill">Spring Boot e boas práticas de API</span>
-                <span class="soft-skill">Arquitetura de software e decisões técnicas</span>
-                <span class="soft-skill">LeetCode e fundamentos de programação</span>
+                <span class="soft-skill">Comunicação clara</span>
+                <span class="soft-skill">Colaboração em equipe</span>
+                <span class="soft-skill">Resolução de problemas</span>
+                <span class="soft-skill">Mentalidade de dono</span>
+                <span class="soft-skill">Organização e foco</span>
+                <span class="soft-skill">Adaptação rápida</span>
               </div>
             </div>
           </div>
@@ -1605,10 +1296,6 @@
         <h3>Contato</h3>
       <p>Estou aberto a oportunidades na área de desenvolvimento, com foco em backend com Java e Python. Vamos conversar.</p>
       <div class="contact-grid">
-        <a class="contact-card" href="tel:+5538998953383">
-          <strong>Telefone</strong>
-          <span>(38) 99895-3383</span>
-        </a>
         <a class="contact-card" href="mailto:fgabrieloliveira1@gmail.com">
           <strong>Email</strong>
           <span>fgabrieloliveira1@gmail.com</span>
@@ -1688,7 +1375,7 @@
     function setupProjectsCarousel() {
       if (!carouselTrack || !carouselSlides.length || !carouselDots || !carouselViewport) return;
       let isUserInteracting = false;
-      let autoSpeed = window.innerWidth <= 768 ? 1.15 : 0.55;
+      let autoSpeed = 0.55;
       let lastTs = 0;
       const baseSlidesCount = carouselSlides.length;
 
@@ -1700,7 +1387,6 @@
       });
 
       const allSlides = [...carouselTrack.querySelectorAll(".project-slide")];
-      carouselViewport.scrollLeft = 0;
 
       function renderDots() {
         carouselDots.innerHTML = carouselSlides.map((_, index) =>
@@ -1811,24 +1497,6 @@
           isUserInteracting = false;
         }, 180);
       }, { passive: false });
-
-      carouselViewport.addEventListener("touchstart", () => {
-        isUserInteracting = true;
-      }, { passive: true });
-
-      carouselViewport.addEventListener("touchend", () => {
-        clearTimeout(carouselViewport._touchResumeTimer);
-        carouselViewport._touchResumeTimer = setTimeout(() => {
-          isUserInteracting = false;
-        }, 220);
-      }, { passive: true });
-
-      window.addEventListener("resize", () => {
-        autoSpeed = window.innerWidth <= 768 ? 1.15 : 0.55;
-        if (window.innerWidth <= 768) {
-          carouselViewport.scrollLeft = Math.max(0, carouselViewport.scrollLeft);
-        }
-      });
 
       renderDots();
       syncActiveDotByScroll();
