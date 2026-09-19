@@ -1,0 +1,21 @@
+/* Camada semântica para CSS nativo. Não requer Tailwind nem compilação. */
+:root {
+    color-scheme: dark;
+    --bg: var(--color-midnight-canvas);
+    --panel: var(--surface-frosted-glass);
+    --text: var(--color-frost-glow);
+    --muted: var(--color-fog-veil);
+    --secondary-text: var(--color-moon-mist);
+    --accent: var(--color-blueprint-blue);
+    --action: var(--color-void-violet);
+    --border: var(--color-glass-edge);
+    --display: var(--font-aeonikpro);
+    --body: var(--font-untitled-sans);
+    --mono: var(--font-dotdigital);
+    --glass-shadow: var(--shadow-subtle-4);
+    --floating-shadow: var(--shadow-subtle-6);
+    --glass-highlight: var(--shadow-subtle-8);
+    --duration-fast: 180ms;
+    --duration-scene: 800ms;
+    --ease-scene: cubic-bezier(.2, .75, .2, 1);
+}
